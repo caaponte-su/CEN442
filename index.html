@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Notebooks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f4f0;
+      --surface: #ffffff;
+      --ink: #1a1a1a;
+      --ink-muted: #6b6560;
+      --accent: #e45c2b;
+      --accent-light: #fef0eb;
+      --border: #e5e0da;
+      --radius: 10px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--ink);
+      color: #fff;
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 60%, rgba(228,92,43,.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 30%, rgba(228,92,43,.15) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      position: relative;
+    }
+    header p {
+      margin-top: .6rem;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.7);
+      position: relative;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* ── Info banner ── */
+    .info-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin-bottom: 2.5rem;
+      font-size: .92rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .info-banner svg { flex-shrink: 0; margin-top: 2px; }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--ink-muted);
+      margin-bottom: .9rem;
+    }
+
+    /* ── Notebook cards ── */
+    .notebook-list { display: flex; flex-direction: column; gap: .65rem; }
+
+    .notebook-card {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .2s, border-color .2s, transform .15s;
+      box-shadow: var(--shadow);
+    }
+    .notebook-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(228,92,43,.12), 0 6px 20px rgba(0,0,0,.06);
+      transform: translateY(-1px);
+    }
+
+    .nb-number {
+      width: 2.6rem;
+      height: 2.6rem;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--bg);
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--accent);
+    }
+
+    .nb-info h3 {
+      font-size: .95rem;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .nb-info p {
+      font-size: .82rem;
+      color: var(--ink-muted);
+      margin-top: .15rem;
+    }
+
+    .nb-badge {
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .3em .7em;
+      border-radius: 5px;
+      white-space: nowrap;
+    }
+    .nb-badge.open  { background: #e6f4ea; color: #1a7f37; }
+    .nb-badge.colab { background: #fef3c7; color: #92400e; }
+
+    .arrow-icon {
+      color: var(--ink-muted);
+      transition: transform .2s, color .2s;
+    }
+    .notebook-card:hover .arrow-icon { transform: translateX(3px); color: var(--accent); }
+
+    /* ── Separator ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.2rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--ink-muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 550px) {
+      .notebook-card { grid-template-columns: 1fr auto; }
+      .nb-number { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📓 Course Notebooks</h1>
+    <p>Interactive Jupyter notebooks — Spring 2026</p>
+  </header>
+
+  <div class="container">
+
+    <!-- ── How-to banner ── -->
+    <div class="info-banner">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Click any notebook below to open it in <strong>Google Colab</strong> (recommended) or download the <code>.ipynb</code> file. Make sure to save a copy to your own Drive.</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         UNIT 1
+         ══════════════════════════════════════════ -->
+    <p class="section-label">Unit 1 — Foundations</p>
+    <div class="notebook-list">
+
+      <!-- Notebook 1 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/01_intro.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">01</span>
+        <div class="nb-info">
+          <h3>Introduction &amp; Setup</h3>
+          <p>Environment setup, Python refresher, importing libraries</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <!-- Notebook 2 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/02_data_types.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">02</span>
+        <div class="nb-info">
+          <h3>Data Types &amp; Structures</h3>
+          <p>Lists, dictionaries, NumPy arrays, Pandas DataFrames</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <!-- Notebook 3 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/03_visualization.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">03</span>
+        <div class="nb-info">
+          <h3>Data Visualization</h3>
+          <p>Matplotlib, Seaborn, and basic plotting techniques</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+    </div>
+
+    <hr class="section-divider" />
+
+    <!-- ══════════════════════════════════════════
+         UNIT 2
+         ══════════════════════════════════════════ -->
+    <p class="section-label">Unit 2 — Analysis</p>
+    <div class="notebook-list">
+
+      <!-- Notebook 4 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/04_eda.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">04</span>
+        <div class="nb-info">
+          <h3>Exploratory Data Analysis</h3>
+          <p>Summary statistics, distributions, missing data handling</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <!-- Notebook 5 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/05_regression.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">05</span>
+        <div class="nb-info">
+          <h3>Linear Regression</h3>
+          <p>Model fitting, evaluation metrics, scikit-learn basics</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+      <!-- Notebook 6 -->
+      <a class="notebook-card" href="https://colab.research.google.com/github/YOUR_USERNAME/YOUR_REPO/blob/main/notebooks/06_classification.ipynb" target="_blank" rel="noopener">
+        <span class="nb-number">06</span>
+        <div class="nb-info">
+          <h3>Classification</h3>
+          <p>Logistic regression, decision trees, confusion matrices</p>
+        </div>
+        <span class="nb-badge colab">Colab</span>
+        <svg class="arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2026 Your Name · Department of Computer Science
+  </footer>
+
+</body>
+</html>
