@@ -30,7 +30,8 @@ twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
-theme: hyde
+# theme: hyde
+remote theme: poole/hyde
 plugins:
   - jekyll-feed
 
