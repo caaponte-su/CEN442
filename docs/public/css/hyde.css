@@ -70,6 +70,25 @@ html {
   }
 }
 
+
+/* Hide submenu by default */
+.sidebar-dropdown .dropdown-menu {
+  display: none;
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Show submenu when active */
+.sidebar-dropdown.active .dropdown-menu {
+  display: block;
+}
+
+/* Style the dropdown toggle link */
+.sidebar-dropdown .dropdown-toggle {
+  cursor: pointer;
+}
+
 /* Sidebar links */
 .sidebar a {
   color: #fff;
