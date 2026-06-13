@@ -13,3 +13,15 @@
 
   </body>
 </html>
+
+document.addEventListener("DOMContentLoaded", function() {
+  var toggles = document.querySelectorAll(".dropdown-toggle");
+
+  toggles.forEach(function(toggle) {
+    toggle.addEventListener("click", function(e) {
+      e.preventDefault();
+      var parent = this.parentElement;
+      parent.classList.toggle("active");
+    });
+  });
+});
