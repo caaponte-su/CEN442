@@ -3,28 +3,19 @@ layout: page
 title: About
 ---
 
-<p class="message">
+<!-- <p class="message">
   Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
 </p>
+-->
+Welcome to Syracuse University's CEN442 Unit Operations GitHub site. This site will serve as a repository for interactive activities using Jupyter notebooks and other software resources.
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
+Below is a list of useful links and tutorials to get you started with these resources.
 
-There are currently two themes built on Poole:
+## Useful Links
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
+* [Basics of Python and Jupyter notebooks](https://colab.research.google.com/github/data-psl/lectures2020/blob/master/notebooks/01_python_basics.ipynb)
+* Dr. Jesse Bond has excellent tutorials on python. You can access it [here](https://jqbond.github.io/CEN587/Chapter1.html)
+* My favorite code editor [Sublime Text](http://sublimetext.com)
 
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
 
 Thanks for reading!
