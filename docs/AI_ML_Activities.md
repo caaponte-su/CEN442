@@ -1,6 +1,6 @@
 ---
 layout: page
-title: AI/ML Activities
+title: Notebook Activities
 order: 2
 ---
 
