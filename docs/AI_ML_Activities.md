@@ -1,6 +1,7 @@
 ---
 layout: page
 title: AI/ML Activities
+order: 2
 ---
 
 Below are links to the Jupyter Notebooks related to CEN442 Activities
