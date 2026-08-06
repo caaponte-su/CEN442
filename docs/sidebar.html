@@ -26,7 +26,7 @@
           {% endif %}
         {% endfor %}
       -->
-      {% assign pages_list = site.pages | sort:"name" %}
+      {% assign pages_list = site.pages | sort:"path" %}
       {% for node in pages_list %}
         {% if node.title != null %}
           {% if node.layout == "page" %}
