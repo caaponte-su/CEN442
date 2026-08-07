@@ -1,5 +1,5 @@
 ---
-layout: Default
+layout: default
 title: Notebook Activities
 order: 2
 ---
