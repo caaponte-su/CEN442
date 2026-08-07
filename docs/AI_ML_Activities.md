@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: None
 title: Notebook Activities
 order: 2
 ---
